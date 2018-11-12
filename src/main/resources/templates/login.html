@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>唯美定时任务系统</title>
+<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+<style>
+body {
+    color: #333;
+    background-color: #f8f9fc;
+}
+body,ul,img,hr,body { margin: 0; padding: 0 }
+ul, li { list-style: none }
+a {text-decoration: none; color: #333; transition: color .2s;}
+a:hover { color: #14B177 }
+input,img,select,option,button{ outline: none; padding: 0; color: #333}
+button { cursor: pointer; background-color: #FFF}
+img,table{border: none;}
+input,span,select,button{
+    font-family: Helvetica,Tahoma,"Hiragino Sans GB","Microsoft YaHei";
+}
+body {
+    font-family: Helvetica,Tahoma,"Hiragino Sans GB","Microsoft YaHei";
+    font-size: 100%;
+    color: #333;
+}
+hr {
+    height: 1px;
+    border: none;
+    background-color: #EEE;
+}
+
+.center {
+    margin: 0 auto;
+}
+.text-center {
+    text-align: center;
+}
+.touch {
+    cursor: pointer;
+}
+.untouch {
+    cursor: not-allowed;
+}
+
+.clearfix:after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+[v-cloak] {
+  display: none;
+}
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,.7);
+    z-index: 1;
+    transition: all 0.4s;
+}
+
+
+
+/*/////////////////////////*/
+/*//         login       //*/
+/*/////////////////////////*/
+.login-wrap {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -225px;
+    height: 500px;
+    width: 450px;
+    box-sizing: border-box;
+    background-color: #FFF;
+    border: 1px solid #14B177;
+    overflow: hidden;
+    z-index: 10;    
+}
+
+.login-wrap .header {
+    padding-top: 20px;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #EEE;
+    border-top: 2px solid #14B177;
+}
+.login-wrap .header :not(:last-child){
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    width: 35%;
+}
+.tabline {
+    position: absolute;
+    box-sizing: border-box;
+    width: 30%;
+    left: 17%;
+    top: 60px;
+    height: 3px;
+    background-color: #14B177;
+    transition: left .4s;
+}
+.tabline:after {
+
+}
+.tabline.rigth {
+    left: 53%;
+}
+
+.login-wrap .login-body {
+    padding-top: 100px;
+    width: 200%;
+    height: 300px;
+    overflow: hidden;
+}
+.login-wrap .login-body:after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+.login-wrap .login-body>div {
+    /*position: relative;*/
+    float: left;
+    display: inline-block;
+    /*height: 400px;*/
+    width: 50%;
+}
+.signin-body {
+    transition: all .5s;
+    margin-left: -50%;
+}
+.signin-body.active {
+    margin-left: 0;
+}
+
+.login-wrap .input {
+    position: relative;
+    margin: 0 100px 30px;
+    height: 40px;
+}
+.login-wrap input {
+    font-size: 16px;
+    padding: 0 10px;
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #e5e5e6;
+    box-sizing: border-box;
+}
+/*媒体查询*/
+@media screen and (max-width: 720px) {
+    .login-wrap {
+        width: 90%;
+    }
+    .login-wrap .input {
+        margin: 0 50px 30px;
+    }
+}
+.input .label {
+    color: #888;
+    position: absolute;
+    height: 100%;
+    line-height: 40px;
+    top: 0;
+    left: 10px;
+    text-align: left;
+    transition: all .4s;
+}
+.label.focus {
+    top: -25px;
+    left: 5px;
+    font-size: 0.75em;
+}
+.login-wrap .submit {
+    margin: 0 auto;
+    height: 42px;
+    width: 100%;
+    background-color: #14B177;
+    border: none;
+    border-radius: 3px;
+    line-height: 40px;
+}
+.submit[disabled]{
+    color: #666;
+    background-color: #EEE;
+    cursor: not-allowed;
+}   
+.input:not(:last-child)::after {
+    position: absolute;
+    content: '';
+    display: block;
+    bottom: 0px;
+    height: 2px;
+    left: 50%;
+    right: 50%;
+    background-color: #14B177;
+    transition: all 0.3s;
+    border-radius: 100px;
+}
+.input.active::after {
+    left: 0;
+    right: 0;
+}
+
+
+.footer {
+    border-top: 1px solid #EEE;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    text-align: center;
+}
+.footer>div {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    margin: 0 15px;
+    background-color: #DDD;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.wechat-login {
+    background-image: url('../images/wechat.png');
+}
+.wechat-login:hover {
+    background-color: #79CE4C;
+}
+.weibo-login {
+    background-image: url('../images/weibo.png');
+}
+.weibo-login:hover {
+    background-color: #F76A68;
+}
+.qq-login {
+    background-image: url('../images/qq.png');
+}
+.qq-login:hover {
+    background-color: #49B9EC;
+}
+#captcha2 {
+}
+
+
+.submit {
+    padding: 8px 12px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+}
+.operate-wrap {
+    text-align: right;
+    margin-top: 50px;
+}
+
+.pay-wrap {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -280px;
+    padding: 10px 30px;
+    width: 560px;
+    border: 1px solid #DDD;
+    box-sizing: border-box;
+}
+.btn-pay {
+    padding: 10px 10px 10px 39px;
+    position: relative;
+    font-size: 16px;
+    border: none;
+    /*width: 100px;*/
+    background-color: #00A0E8; /*支付宝官方颜色*/
+    color: #FFF;
+    border-radius: 5px; 
+}
+
+
+
+.delete-item {
+    margin-bottom: 5px;
+    padding: 3px 10px;
+    border: 1px solid #EEE;
+    font-size: 13px;
+    background-color: rgba(0,0,0,0.02);
+}
+
+.choose-num input {
+    padding-left: 12px;
+    border:none; 
+    width: 100%
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
+.image-alipay {
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    left: 3px;
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+}
+</style>
+</head>
+<body>
+<div id="app">
+    <login v-on:login-success="loginSuccess"></login>
+</div>
+</body>
+
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.js"></script>
+<script>
+
+/* 登录组件 */
+Vue.component('login', {
+    template: `
+    <div id="login" class="login-wrap center">
+        <div class="header text-center">
+            <div class="signin touch" @click="toggleMenu('signin')">登录</div>
+            <div class="signup touch" @click="toggleMenu('signup')">注册</div>
+            <div class="tabline" :class="{rigth: !showSignin}"></div>
+        </div>
+        <div class="login-body">
+            <div class="signin-body" :class="{active : showSignin}" @keyup.enter="onEnterkeyup">
+                <div class="input" :class="{active : signin.usernameFocus}">
+                    <label for="username" class="label" :class="{focus : signin.usernameFocus}">用户名</label>
+                    <input @focus="toggleSigninFocus('username')" @blur="toggleSigninFocus('username')" v-model="signin.username" id="username" type="text" autocomplete="off">
+                </div>
+                <div class="input" :class="{active : signin.passwordFocus}">
+                    <label for="password" class="label" :class="{focus : signin.passwordFocus}">密码</label>
+                    <input @focus="toggleSigninFocus('password')" @blur="toggleSigninFocus('password')" v-model="signin.password" id="password" type="password" autocomplete="off">
+                </div>
+                <div class="input">
+                    <input type="submit" class="submit touch" @click.stop="validateSignin" value="登录" :disabled="signin.validated == false">
+                </div>
+            </div>
+            <div v-show="showSignup" class="signup-body">
+                <div class="input" :class="{active : signup.emailFocus}">
+                    <div>未开放</div>
+                    <!--<label for="email" class="label" :class="{focus : signup.emailFocus}">请输入您的邮箱</label>-->
+                    <!--<input @focus="toggleSignupFocus()" @blur="toggleSignupFocus()" v-model="signup.email" id="email" type="text" autocomplete="off">-->
+                </div>
+                <div class="input" id="captcha2">
+                    <!-- <p id="wait2" v-show="!geetest.init">正在加载验证码......</p>-->
+                </div>
+                <div class="input">
+                    <input type="submit" class="submit touch" @click.stop="sendEmail" value="未开放" :disabled="signup.validated == false">
+                </div>
+            </div>
+            <div v-show="showSendEmailSuccess">
+                <div class="text-center">请登录邮箱完成注册</div>
+            </div>
+        </div>
+
+    </div>
+    `,
+    data: function() {
+        return {
+            signin: {
+                usernameFocus: false,
+                passwordFocus: false,
+                username: '',
+                password: '',
+                validated: false,
+            },
+            signup: {
+                emailFocus: false,
+                email: '',
+                validated: false,
+                reSendText: '',
+            },
+            showSignin: true,   
+            showSignup: true, 
+            showSendEmailSuccess: false,
+        }
+    },
+    watch: {
+        signin: {
+            handler: function() {
+                // this.validateSignin();
+                if (this.signin.username != '' && this.signin.password != '') {
+                    this.signin.validated = true;
+                } else {
+                    this.signin.validated = false;
+                }
+            },
+            deep: true,
+        },
+    },
+    mounted: function() {
+
+    },
+    methods: {
+        toggleMenu: function (type) {
+            if ((type === 'signin' && document.querySelector(".tabline").classList.contains('rigth'))
+                || (type === 'signup' && !document.querySelector(".tabline").classList.contains('rigth'))) {
+                this.showSignin = !this.showSignin;
+            }
+        },
+        toggleSigninFocus: function(type) {
+            console.log("in toggleSigninFocus")
+            if (type === 'username') {
+                this.signin.usernameFocus = this.signin.username === '' ? !this.signin.usernameFocus : this.signin.usernameFocus;
+            } else if (type === 'password') {
+                this.signin.passwordFocus = this.signin.password === '' ? !this.signin.passwordFocus : this.signin.passwordFocus;
+            }
+        },
+        toggleSignupFocus: function() {
+            console.log("in toggleSignupFocus")
+            this.signup.emailFocus = this.signup.email === '' ? !this.signup.emailFocus : this.signup.emailFocus;
+        },
+        validateSignin: function() {
+            if (this.signin.validated) {
+                //登录
+                this.$http.post(
+                    'login',
+                    {
+                        username: this.signin.username,
+                        password: this.signin.password,
+                    },
+                    { emulateJSON: true }
+                ).then(function(res) {
+                    console.log(res)
+                    var data = res.data;
+                    if (data.code === 0) {
+                        this.$emit('login-success');
+                    } else {
+                        alert(data.message);
+                    }
+                }); 
+            }
+            // console.log(this.signin.validated);
+        },
+        onEnterkeyup: function() {
+            console.log('enter')
+            this.validateSignin();
+        }
+
+    }
+});
+
+function $(el) {
+    return Array.from(document.querySelectorAll(el));
+}
+var login = new Vue({
+    el: '#app',
+    data: {
+
+    },
+    methods: {
+        loginSuccess: function() {
+            window.location = window.location.origin;
+        }
+    }
+})
+
+</script>
+</html>

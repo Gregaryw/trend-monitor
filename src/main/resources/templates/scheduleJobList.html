@@ -1,0 +1,405 @@
+    <!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+<meta charset="UTF-8">
+<title>唯美定时任务系统</title>
+<!-- 先引入element-ui的css文件 -->
+<link href="https://cdn.bootcss.com/element-ui/1.4.6/theme-default/index.css" rel="stylesheet">
+<style>
+body { margin: 0; padding: 0 }
+a { text-decoration: underline; color: #333 }
+body {
+    font-family: Helvetica,Tahoma,"Hiragino Sans GB","Microsoft YaHei";
+    font-size: 100%;
+    color: #333;
+}
+input,textarea,span,select,button{
+    font-family: Helvetica,Tahoma,"Hiragino Sans GB","Microsoft YaHei";
+}
+[v-cloak] {
+    display: none;
+}
+.pagination {
+    float: right;
+    margin-top: 20px;
+}
+/* 减少空白 */
+.el-table .cell, .el-table th>div {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+code {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    padding: 2px 4px;
+    /*font-size: 90%;*/
+    /*color: #c7254e;*/
+    /*background-color: #f9f2f4;*/
+    border-radius: 4px; 
+}
+</style>
+</head>
+
+<body>
+<div id="app" v-cloak>
+<el-row style="margin-top: 200px">
+    <el-col :span="12" style="margin: 10px auto">
+        <el-input placeholder="id" v-model="searchForm.id" style="width: 60px" size="small"></el-input>
+        <el-input placeholder="任务名称" v-model="searchForm.name" style="width: 150px" size="small"></el-input>
+        <el-select v-model="searchForm.group" placeholder="任务组" style="width: 150px;" size="small">
+            <el-option label="全部（任务组）" :value="null"></el-option>
+            <el-option v-for="group in groupList" :key="group.value" :label="group.label" :value="group.value"></el-option>
+        </el-select>
+        <el-select v-model="searchForm.jobStatus" placeholder="任务状态" style="width: 150px;" size="small">
+            <el-option label="全部（任务状态）" :value="null"></el-option>
+            <el-option label="待运行(WAITING)" value="WAITING"></el-option>
+            <el-option label="已运行(RUNNING)" value="RUNNING"></el-option>
+            <el-option label="运行异常(ERROR)" value="ERROR"></el-option>
+            <el-option label="运行结束(FINISH)" value="FINISH"></el-option>
+            <el-option label="暂停(PAUSE)" value="PAUSE"></el-option>
+        </el-select>
+        <el-select v-model="searchForm.running" placeholder="运行状态" style="width: 150px;" size="small">
+            <el-option label="全部（运行状态）" :value="null"></el-option>
+            <el-option label="正在运行" :value="1"></el-option>
+            <el-option label="运行休息" :value="0"></el-option>
+        </el-select>
+        <el-button type="primary" icon="search" @click="handleSearch" size="small">搜索 / 刷新</el-button>
+        <el-button type="primary" icon="plus" @click="menu.createDialogVisible = true" size="small">创建任务</el-button>
+    </el-col >
+    <el-col :span="4" style="float: right">
+        <!-- <el-button type="primary" @click="batchBuildHTML" :loading="batchBuildHTMLLoading" icon="upload">一键生成页面</el-button> -->
+    </el-col>
+</el-row>
+<el-table :data="jobList" height="600" border style="width: 100%;" >
+    <el-table-column prop="id" label="ID" width="50"></el-table-column>
+    <el-table-column prop="group" label="任务组" width="150">
+        <template scope="scope">
+            <span v-for="group in groupList" v-if="scope.row.group === group.value">{{group.label}}</span>
+        </template>
+    </el-table-column>
+    <el-table-column prop="name" label="任务名称" width="150"></el-table-column>
+    <el-table-column prop="description" label="任务描述" show-overflow-tooltip width=""></el-table-column>
+    <el-table-column prop="cron" label="cron表达式" width="120">
+        <template scope="scope">
+            <code>{{scope.row.cron}}</code>
+        </template>
+    </el-table-column>
+    <el-table-column prop="startTime" label="开始时间" width="150"></el-table-column>
+    <el-table-column prop="endTime" label="结束时间" width="150"></el-table-column>
+    <el-table-column prop="exeCount" label="执行次数" width="80"></el-table-column>
+    <el-table-column prop="maxExeCount" label="最大执行次数" width="100"></el-table-column>
+    <el-table-column prop="frontJobStatus" label="状态" width="80"></el-table-column>
+    <!-- <el-table-column prop="className" label="类全路径名" width="250"></el-table-column> -->
+    <!-- <el-table-column prop="methodName" label="方法名" width=""></el-table-column> -->
+    <el-table-column  label="运行状态" width="80">
+        <template scope="scope">
+            <el-tag v-if="scope.row.running === 1" type="success">正在运行</el-tag>
+            <el-tag v-else>运行休息</el-tag>
+        </template>
+    </el-table-column>
+    <el-table-column prop="delayTime" label="延迟(S)" width="70"></el-table-column>
+    <el-table-column prop="intervalTime" label="间隔(S)" width="70"></el-table-column>
+    
+    <el-table-column label="操作" width="280">
+        <template scope="scope">
+            <el-button style="margin-left:5px" size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <!-- <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">上线</el-button> -->
+            <el-button style="margin-left:5px" size="mini" type="primary" @click="startJob(scope.$index, scope.row)" :loading="scope.row.loading">启动</el-button>
+            <el-button style="margin-left:5px" size="mini" type="primary" @click="stopJob(scope.$index, scope.row)" :loading="scope.row.loading" :disabled="scope.row.jobStatus == 'FINISH' || scope.row.jobStatus == 'PAUSE'">暂停</el-button>
+            <!-- <el-button size="mini" type="primary" @click="scope.row.loading = true" :loading="activityList[scope.$index].loading" >生成页面</el-button> -->
+            <!-- <el-button style="margin-left:5px" size="mini" type="primary" @click="preview(scope.$index, scope.row)">预览</el-button> -->
+            <el-button style="margin-left:5px" size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            <!-- <span style="margin-left:5px" size="mini"  @mouseenter="togglePop($event, scope.row.dataCollect)" @mouseleave="togglePop($event, scope.row.dataCollect)">数据</span> -->
+            <el-tag v-if="scope.row.mpVisible === 1" type="success">小程序</el-tag>
+            <!-- <el-switch v-model="scope.row.mpVisible" on-text="小程序开启" off-text="OFF" :on-value="1" :off-value="0" :disabled="true"></el-switch> -->
+        </template>
+    </el-table-column>
+</el-table>
+<el-pagination
+  class="pagination"
+  @current-change="handleCurrentChange"
+  :current-page="currentPage"
+  :page-size="pageSize"
+  layout="total, prev, pager, next, jumper"
+  :total="totalSize">
+</el-pagination>
+
+<!-- 创建 -->
+<el-dialog top="10%" title="创建活动设置" :visible.sync="menu.createDialogVisible">
+    <el-form ref="createForm" :model="createForm" label-width="130px" style="width: 100%;">
+        <el-form-item label="任务组">
+            <el-select v-model="createForm.group" placeholder="任务组" style="width: 120px;" size="small">
+                <el-option v-for="group in groupList" :key="group.value" :label="group.label" :value="group.value"></el-option>
+            </el-select>
+        </el-form-item>
+        <el-form-item label="任务名称">
+            <el-input v-model="createForm.name" style="" :maxlength="17"></el-input>
+        </el-form-item>
+        <el-form-item label="任务描述">
+            <el-input type="textarea" :rows="4" :maxlength="255" placeholder="任务描述" v-model="createForm.description"></el-input>
+        </el-form-item>
+        <el-form-item label="cron表达式">
+            <el-input v-model="createForm.cron" :maxlength="100" placeholder="" ></el-input>
+        </el-form-item>
+         <el-form-item label="间隔时间">
+            <el-input-number v-model="createForm.intervalTime" :min="0" :max="99999" size="small"></el-input-number>
+            <span>单位秒，任务第一次执行后间隔多久再次执行，如果cron不为空，则优先按cron方式执行</span>
+        </el-form-item>
+        <el-form-item label="延迟时间">
+            <el-input-number v-model="createForm.delayTime" :min="0" :max="99999" size="small"></el-input-number>
+            <span>单位秒，表示第一次的延迟时间</span>
+        </el-form-item>
+        <el-form-item label="起始 - 结束">
+            <el-date-picker v-model="createForm.startTime" type="datetime" placeholder="选择开始时间" ></el-date-picker>
+            <el-date-picker v-model="createForm.endTime" type="datetime" placeholder="选择结束时间"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="最大执行次数">
+            <el-input-number v-model="createForm.maxExeCount" :min="-1" :max="99999" size="small"></el-input-number>
+            <span>(-1不限制)</span>
+        </el-form-item>
+        <el-form-item label="类全路径名">
+            <el-input v-model="createForm.className"></el-input>
+        </el-form-item>
+        <el-form-item label="方法名">
+            <el-input v-model="createForm.methodName" style=""></el-input>
+        </el-form-item>
+        <el-form-item label="spring组件">
+            <el-switch v-model="createForm.springBean" on-text="" :on-value="1" :off-value="0" off-text=""></el-switch>
+        </el-form-item>
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+        <el-button @click="menu.createDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="handleCreate">确 定</el-button>
+    </span>
+</el-dialog>
+
+
+<!-- 编辑 -->
+<el-dialog top="10%" title="修改活动设置" :visible.sync="menu.editDialogVisible">
+    <el-form ref="form" :model="form" label-width="130px" style="width: 100%;">
+         <el-form-item label="任务组">
+            <el-select v-model="form.group" placeholder="任务组" style="width: 120px;" size="small">
+                <el-option v-for="group in groupList" :key="group.value" :label="group.label" :value="group.value"></el-option>                
+            </el-select>
+        </el-form-item>
+        <el-form-item label="任务名称">
+            <el-input v-model="form.name" style=""></el-input>
+        </el-form-item>
+        <el-form-item label="任务描述">
+            <el-input type="textarea" :rows="4" :maxlength="255" placeholder="" v-model="form.description"></el-input>
+        </el-form-item>
+        <el-form-item label="cron表达式">
+            <el-input :maxlength="100" placeholder="" v-model="form.cron"></el-input>
+        </el-form-item>
+        <el-form-item label="间隔时间">
+            <el-input-number v-model="form.intervalTime" :min="0" :max="99999" size="small"></el-input-number>
+            <span>单位秒，任务第一次执行后间隔多久再次执行，如果cron不为空，则优先按cron方式执行</span>
+        </el-form-item>
+        <el-form-item label="延迟时间">
+            <el-input-number v-model="form.delayTime" :min="0" :max="99999" size="small"></el-input-number>
+            <span>单位秒，表示第一次的延迟时间</span>
+        </el-form-item>
+        <el-form-item label="起始 - 结束">
+            <el-date-picker v-model="form.startTime" type="datetime" placeholder="选择开始时间" ></el-date-picker>
+            <el-date-picker v-model="form.endTime" type="datetime" placeholder="选择结束时间"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="最大执行次数">
+            <el-input-number v-model="form.maxExeCount" :min="-1" :max="99999" size="small"></el-input-number>
+        </el-form-item>
+        <el-form-item label="类全路径名">
+            <el-input v-model="form.className"></el-input>
+        </el-form-item>
+        <el-form-item label="方法名">
+            <el-input v-model="form.methodName" style="" ></el-input>
+        </el-form-item>
+
+        <el-form-item label="spring组件">
+            <el-switch v-model="form.springBean" on-text="" :on-value="1" :off-value="0" off-text=""></el-switch>
+        </el-form-item>
+        
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+        <el-button @click="menu.editDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="handleUpdate">确 定</el-button>
+    </span>
+</el-dialog>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.js"></script>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+<script src="https://cdn.bootcss.com/element-ui/1.4.6/index.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.5.4/echarts.min.js"></script> -->
+<script>
+
+// Add a response interceptor
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        menu: {
+            createDialogVisible: false,
+            editDialogVisible: false,
+        },
+        groupList: [ // 任务组
+            {
+                value: 'search_engine',
+                label: '搜索引擎',
+            },
+            {
+                value: 'sms_email',
+                label: '短信与邮件',
+            },
+            {
+                value: 'cart',
+                label: '购物车',
+            },
+            {
+                value: 'order',
+                label: '订单',
+            },
+            {
+                value: 'background_order_check',
+                label: '后台审单',
+            },
+            {
+                value: 'product',
+                label: '商品',
+            },
+            
+        ],
+        currentPage: 1,     // 当前页数
+        totalSize: 0,       // 总数
+        pageSize: 15,       // 每页的数量
+        jobList: [],
+        createForm: {
+            group: null,
+            startTime: '',
+            endTime: '',
+            springBean: 1,
+            maxExeCount: -1,
+            intervalTime: 0,
+            delayTime: 0,
+        },
+        form: {},
+        searchForm: {
+            id: null,
+            name: null,
+            running: null,
+            group: null,
+            jobStatus: null,
+        },
+        keyword: '',
+    },
+    mounted: function() {
+        // var self = this;
+        // axios.interceptors.response.use(function (res) {
+        //     if (res.data.code === 0) {
+        //         self.$message.success("操作成功");
+        //         // console.log("后端返回成功")
+        //     } else {
+        //         self.$message.error('操作失败：' + res.data.message);
+        //         // console.log("后端返回失败")
+        //     }
+        //     return res.data;
+        // }, function (error) {
+        //     // Do something with response error
+        //     return Promise.reject(error);
+        // });
+        Vue.http.interceptors.push(function(request, next) {
+            next(function(res) {
+                if (res.data.code === 0) {
+                    this.$message.success("操作成功");
+                    res.body.ok = true;
+                } else if (res.data.code === -6) {
+                    this.$message.error('登录失效');
+                    setTimeout(function() {
+                        window.location = window.location;   
+                    }, 1000)
+                } else {
+                    this.$message.error('操作失败：' + res.data.message);
+                    res.body.ok = false;
+                }
+                return res.body;
+            });
+        });
+        this.getList();
+    },
+    methods: {
+        getList: function() {
+            var query = Object.assign({}, this.searchForm);
+            query.pageNo = this.currentPage;
+            query.pageSize = this.pageSize;
+            if (!query.name) {
+                delete query.name;
+            }
+            if (!query.group) {
+                delete query.group;
+            }
+            this.$http.get('/job/list', {
+                params: query
+            }).then(function(res) {
+                this.jobList = res.content.list;
+                this.total = res.content.total;
+            });
+        },
+        handleCreate: function() {
+            console.log(this.createForm);
+            this.createForm.startTime = this.getFormatDateString(this.createForm.startTime);
+            this.createForm.endTime = this.getFormatDateString(this.createForm.endTime);
+            this.$http.post('/job', this.createForm, {emulateJSON: true}).then(function(res) {
+                this.menu.createDialogVisible = false;
+                this.getList();
+            });
+        },
+        handleUpdate: function() {
+            console.log(this.form);   
+            this.$http.put('/job/' + this.form.id, this.form).then(function(res) {
+                this.menu.editDialogVisible = false;
+                this.getList();
+            });
+        },
+        handleDelete: function(idx, row) {
+            console.log(idx);
+            this.$http.delete('/job/' + row.id).then(function(res) {
+                this.getList();
+            });
+        },
+        startJob: function(idx, row) {
+            this.$http.put('/job/' + row.id + '/start').then(function(res) {
+                this.getList();
+            })
+        },
+        stopJob: function(idx, row) {
+            this.$http.put('/job/' + row.id + '/stop').then(function(res) {
+                this.getList();
+            })
+        },
+        handleCurrentChange: function(page) {
+            console.log(page);
+            this.currentPage = page;
+            this.getList();
+        },
+        handleEdit: function(idx, row) {
+            this.form = Object.assign({}, row);  // Object.assign为浅拷贝
+            this.menu.editDialogVisible = true;
+        },
+        handleSearch: function() {
+            console.log(JSON.stringify(this.searchForm));
+            this.getList();
+        },
+        getFormatDateString: function(date) {
+            if (!date)
+                return '';
+            date = new Date(date);
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1; month < 10 ? month = '0' + month : '';
+            var day = date.getDate(); day < 10 ? day = '0' + day : '';
+            var hour = date.getHours(); hour < 10 ? hour = '0' + hour : '';
+            var minute = date.getMinutes();  minute < 10 ? minute = '0' + minute : '';
+            var second = date.getSeconds(); second < 10 ? second = '0' + second : '';
+            return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+        },
+    }
+})
+</script>
+</html>
