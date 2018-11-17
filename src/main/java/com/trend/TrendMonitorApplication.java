@@ -1,5 +1,6 @@
 package com.trend;
 
+import com.alibaba.fastjson.JSONObject;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
