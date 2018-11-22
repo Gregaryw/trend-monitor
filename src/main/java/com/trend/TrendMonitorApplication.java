@@ -1,6 +1,6 @@
 package com.trend;
 
-import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +16,10 @@ import org.springframework.cache.annotation.EnableCaching;
 @SpringBootApplication
 @EnableCaching
 @MapperScan(basePackages = {"tk.mybatis.mapper,com.sephome.*.mapper"})
+@Slf4j
 public class TrendMonitorApplication {
-    private static Logger logger = LoggerFactory.getLogger(TrendMonitorApplication.class);
     public static void main(String[] args) {
-        logger.info("容器启动...");
+        log.info("容器启动...");
         SpringApplication.run(TrendMonitorApplication.class,args);
     }
 
