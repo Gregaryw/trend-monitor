@@ -22,4 +22,5 @@ public class TrendMonitorApplication {
         logger.info("容器启动...");
         SpringApplication.run(TrendMonitorApplication.class,args);
     }
+
 }
