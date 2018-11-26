@@ -2,419 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3f95ad3-20ee-45a2-b755-98ad201ebd7a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/assets/css/ecaps.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-daily.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-prod.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/TrendMonitorApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/abs/AbstractResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/base/BaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/base/BaseEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/base/BaseJson.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/base/BaseMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/base/BaseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/base/BaseServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/common/ControllerPath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/config/RedisConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/constants/PagePrefixEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/constants/ResultEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/exception/GlobalDefaultException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/exception/custom/CustomDefinedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/factory/ResponseParam$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/factory/ResponseParam$ResponseParamBuilderHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/factory/ResponseParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/index/web/IndexController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/login/web/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/schedule/entity/ScheduleJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/schedule/mapper/ScheduleJobMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/schedule/service/ScheduleJobService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/schedule/service/impl/ScheduleJobServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/schedule/web/ScheduleJobController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/trend/util/SpringContextUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ScheduleJobMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/admin/assets/fonts/themify.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/admin/assets/fonts/themify.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/admin/assets/fonts/themify.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/admin/assets/fonts/themify.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/advance-widget.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/badge.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/booking-system.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/button.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/calendar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/card.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/carousel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/chart.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/chartist.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/chat.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/compose-email.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/data-table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/datamap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/favourite_menu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/flot-chart.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/fonts.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/forms.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/gmap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/invoice-edit.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/invoice.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/knob.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/barRating/barRating.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/calendar/fullcalendar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/calendar2/pignose.calendar.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/calendar2/semantic.ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/chartist/chartist.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/data-table/buttons.bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/data-table/buttons.dataTables.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/data-table/dataTables.bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/jsgrid/jsgrid-theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/jsgrid/jsgrid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/line-progress/jquery.lineProgressbar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/lobi-panel/lobipanel.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/menubar/sidebar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/mmc-chat.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/nestable/nestable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/owl.carousel.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/owl.theme.default.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/preloader/pace.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/rangSlider/ion.rangeSlider.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/rangSlider/ion.rangeSlider.skinFlat.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/rangSlider/ion.rangeSlider.skinHTML5.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/rangSlider/ion.rangeSlider.skinModern.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/rangSlider/ion.rangeSlider.skinNice.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/rangSlider/ion.rangeSlider.skinSimple.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/rangSlider/normalize.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/scrollable/scrollable.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/sweetalert/sweetalert.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/themify-icons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/toastr/toastr.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/unix.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/vector-map/jqvmap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/lib/weather-icons.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/menu-upload.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/mixins.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/modal.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/morris-chart.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/nestable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/order-list.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/order-progress.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/panel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/preloader.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/products_1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/products_2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/products_3.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/profile-widget.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/progress-bar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/recent-comments.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/recent-message.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/scrollable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/search.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/social-media-stats.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/tab.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/table-export.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/timeline.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/todo-list.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/ui-element-basic.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/ui-widget-v1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/variable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/vector-map.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/vertical-carousel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/weather.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/css/widget-stat.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/MontserratLight.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/MontserratLight.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/MontserratLight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/MontserratLight.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/MontserratLight.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/fontawesome-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/fontawesome-webfont_files/viewsource.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/themify.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/themify.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/themify.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/themify.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/weathericons-regular-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/weathericons-regular-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/weathericons-regular-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/weathericons-regular-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/fonts/weathericons-regular-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/avatar/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/avatar/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/avatar/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/avatar/usa-flag.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/chat-person-add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/fjords.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/hand.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/lights.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/maximize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/minimize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/nature.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/newyork.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/paris.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/paypal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/picture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/preview1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/profile-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/rangeSliderimg/sprite-skin-flat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/rangeSliderimg/sprite-skin-modern.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/rangeSliderimg/sprite-skin-nice.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/rangeSliderimg/sprite-skin-simple.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/sanfran.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/scrollable/view-1-1200x800.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/smile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/user-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/user-female.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/user-profile.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/user.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/video-cam.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/barRating/barRating.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/barRating/jquery.barrating.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/calendar-2/moment.latest.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/calendar-2/pignose.calendar.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/calendar-2/pignose.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/calendar-2/prism.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/calendar-2/semantic.ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/calendar/fullcalendar-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/calendar/fullcalendar.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/chart-js/Chart.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/chart-js/chartjs-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/chartist/chartist-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/chartist/chartist-plugin-tooltip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/chartist/chartist.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/chat-widget/chat-widget-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/circle-progress/circle-progress-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/circle-progress/circle-progress.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/buttons.colVis.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/buttons.flash.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/buttons.html5.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/buttons.print.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/dataTables.buttons.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/datatables-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/datatables.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/jquery-1.12.4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/jquery.dataTables.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/jszip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/pdfmake.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/data-table/vfs_fonts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/datamap/d3.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/datamap/datamap-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/datamap/datamaps.world.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/datamap/topojson.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/easing/jquery.easing.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/easing/stepup-form-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/curvedLines.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/excanvas.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/flot-chart-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/flot-tooltip/jquery.flot.tooltip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.categories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.crosshair.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.pie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.resize.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.stack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.threshold.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flot-chart/jquery.flot.time.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/flowtype.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/gmap/gmap.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/gmap/gmapApi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/gmap/gmaps.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/granim/granim-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/granim/granim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/invoice-edit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jquery-ui/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jquery-ui/jquery.ui.touch-punch.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jquery.nanoscroller.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/db.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/fields/jsgrid.field.checkbox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/fields/jsgrid.field.control.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/fields/jsgrid.field.number.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/fields/jsgrid.field.select.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/fields/jsgrid.field.text.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/fields/jsgrid.field.textarea.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/jsgrid-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/jsgrid.core.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/jsgrid.field.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/jsgrid.load-indicator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/jsgrid.load-strategies.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/jsgrid.sort-strategies.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/jsgrid/jsgrid.validation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/knob/jquery.knob.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/knob/knob.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/line-progress/jquery.lineProgressbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/line-progress/line-progress-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/menubar/sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/mmc-chat.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/mmc-common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/moment/moment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/morris-chart/morris-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/morris-chart/morris.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/morris-chart/raphael-min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/nestable/jquery.nestable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/nestable/nestable.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/owl-carousel/owl.carousel-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/owl-carousel/owl.carousel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/peitychart/jquery.peity.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/peitychart/peitychart.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/portlets/portlets-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/portlets/portlets.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/preloader/pace.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/rangeSlider/ion.rangeSlider.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/rangeSlider/moment-with-locales.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/rangeSlider/moment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/rangeSlider/rangeslider.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/rating1/jRate.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/rating1/jRate.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/scrollable/holder.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/scrollable/jquery-asScrollable.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/scrollable/jquery-asScrollbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/scrollable/scrollable.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/sparklinechart/jquery.sparkline.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/sparklinechart/sparkline.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/sweetalert/sweetalert.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/sweetalert/sweetalert.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/toastr/toastr.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/toastr/toastr.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.algeria.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.argentina.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.brazil.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.europe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.france.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.germany.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.greece.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.iran.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.iraq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.russia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.tunisia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.turkey.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.usa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/country/jquery.vmap.world.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/jquery.vmap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/jquery.vmap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/jquery.vmap.sampledata.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/vector-map/vector.init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/weather/jquery.simpleWeather.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/lib/weather/weather-init.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/advance-widget.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/badge.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/booking-system.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/button.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/calendar.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/card.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/carousel.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/chart.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/chartist.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/chat.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/compose-email.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/data-table.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/datamap.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/favourite_menu.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/flot-chart.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/fonts.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/forms.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/global.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/gmap.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/header.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/invoice-edit.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/invoice.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/knob.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/login.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/menu-upload.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/mixins.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/modal.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/morris-chart.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/nestable.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/order-list.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/order-progress.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/panel.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/preloader.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/products_1.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/products_2.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/products_3.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/profile-widget.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/profile.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/progress-bar.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/recent-comments.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/recent-message.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/responsive.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/scrollable.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/search.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/social-media-stats.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/style.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/tab.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/table-export.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/table.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/timeline.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/todo-list.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/ui-element-basic.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/variable.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/vector-map.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/vertical-carousel.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/weather.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/less/widget-stat.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/bak.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index-restaurant.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index-school.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index-v1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/scheduleJobList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/SephomeMonitorApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/abs/AbstractResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/base/BaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/base/BaseEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/base/BaseJson.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/base/BaseMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/base/BaseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/base/BaseServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/common/ControllerPath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/config/RedisConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/constants/PagePrefixEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/constants/ResultEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/exception/GlobalDefaultException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/exception/custom/VmeiDefinedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/factory/ResponseParam$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/factory/ResponseParam$ResponseParamBuilderHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/factory/ResponseParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/index/web/IndexController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/login/web/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/schedule/entity/ScheduleJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/schedule/mapper/ScheduleJobMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/schedule/service/ScheduleJobService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/schedule/service/impl/ScheduleJobServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/schedule/web/ScheduleJobController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/sephome/util/SpringContextUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trend-monitor.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/trend/index/web/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trend/index/web/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -424,46 +20,77 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="212937424">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="11" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.29" value="2" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.58" value="1" />
+          <entry key="project.open.time.60" value="1" />
+          <entry key="project.open.time.70" value="1" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="6" />
-          <entry key="java" value="15" />
+          <entry key="html" value="960" />
+          <entry key="java" value="1321" />
+          <entry key="js" value="2" />
           <entry key="md" value="5" />
           <entry key="properties" value="24" />
-          <entry key="xml" value="1" />
+          <entry key="txt" value="80" />
+          <entry key="xml" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="15" />
+          <entry key="HTML" value="960" />
+          <entry key="JAVA" value="1321" />
+          <entry key="JavaScript" value="2" />
           <entry key="Markdown" value="5" />
-          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="PLAIN_TEXT" value="86" />
           <entry key="Properties" value="24" />
-          <entry key="XML" value="1" />
+          <entry key="XML" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="21" />
+          <entry key="class" value="4" />
+          <entry key="css" value="7" />
+          <entry key="html" value="12" />
+          <entry key="java" value="40" />
+          <entry key="jpg" value="2" />
+          <entry key="js" value="8" />
+          <entry key="less" value="2" />
           <entry key="md" value="1" />
-          <entry key="properties" value="8" />
+          <entry key="properties" value="12" />
           <entry key="sql" value="1" />
+          <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="21" />
+          <entry key="CLASS" value="4" />
+          <entry key="CSS" value="7" />
+          <entry key="HTML" value="12" />
+          <entry key="Image" value="2" />
+          <entry key="JAVA" value="40" />
+          <entry key="JavaScript" value="8" />
+          <entry key="Less" value="2" />
           <entry key="Markdown" value="1" />
-          <entry key="Properties" value="8" />
+          <entry key="Properties" value="12" />
           <entry key="SQL" value="1" />
+          <entry key="XML" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -503,97 +130,118 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/TrendMonitorApplication.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+            <state relative-caret-position="232">
+              <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#li#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#li#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-131">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="119" column="10" selection-start-line="25" selection-start-column="2" selection-end-line="119" selection-end-column="10" />
+            <state relative-caret-position="4438">
+              <caret line="243" column="27" selection-start-line="243" selection-start-column="27" selection-end-line="243" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/base/BaseServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/weadmin.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+            <state relative-caret-position="1140">
+              <caret line="129" column="24" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/base/BaseService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/weadmin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="342">
+              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/base/BaseMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/font.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="114">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/base/BaseController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
-              <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
+            <state relative-caret-position="547">
+              <caret line="342" column="10" lean-forward="true" selection-start-line="342" selection-start-column="10" selection-end-line="342" selection-end-column="10" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#ul#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/constants/ResultEnum.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/index/web/IndexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+            <state relative-caret-position="323">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="e#389#390#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>/tes</find>
+      <find>/lib/layui/css/layui.css</find>
+      <find>/li</find>
+      <find>amdin</find>
+      <find>static</find>
+      <find>console</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -607,13 +255,29 @@
         <option value="$PROJECT_DIR$/src/main/java/com/trend/factory/ResponseParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/trend/schedule/service/impl/ScheduleJobServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/trend/schedule/entity/ScheduleJob.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/trend/schedule/mapper/ScheduleJobMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/trend/schedule/service/ScheduleJobService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/trend/schedule/web/ScheduleJobController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application-dev.properties" />
         <option value="$PROJECT_DIR$/READER.md" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/trend/config/RedisConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ScheduleJobMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/trend/schedule/mapper/ScheduleJobMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/trend/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/test1.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/test.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/trend/schedule/web/ScheduleJobController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/trend/FileChannelTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/trend/TrendMonitorApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/layui/layui.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/eleDel.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/trend/index/web/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/font.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/weadmin.less" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/weadmin.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/login3.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/login.html" />
       </list>
     </option>
   </component>
@@ -664,9 +328,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -677,28 +338,117 @@
             <path>
               <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
               <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="trend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="trend" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="trend" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="trend-monitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="trend-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SearchEverywhereHistoryKey" value="mediaty&#9;PSI&#9;JAVA://org.springframework.http.MediaType" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542026087912" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543066933684" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../trend-monitor-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\project\trend-monitor\src\main\resources\templates" />
+      <recent name="G:\project\trend-monitor\src\main\resources\static" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\project\trend-monitor\src\main\resources\static" />
+      <recent name="G:\project\trend-monitor\src\main\resources\static\assets\css" />
       <recent name="G:\project\trend-monitor\src\main\java\com\trend" />
     </key>
   </component>
@@ -714,7 +464,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.TrendMonitorApplication">
+    <configuration name="FileChannelTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.trend.FileChannelTest" />
+      <module name="trend-monitor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.trend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.trend.Main" />
+      <module name="trend-monitor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.trend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TrendMonitorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="trend-monitor" />
       <extension name="coverage">
@@ -728,9 +504,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.TrendMonitorApplication" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.FileChannelTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.TrendMonitorApplication" />
+        <item itemvalue="Application.FileChannelTest" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -746,18 +529,49 @@
       <updated>1541990173996</updated>
       <workItem from="1541990178341" duration="1339000" />
       <workItem from="1542022417840" duration="2165000" />
+      <workItem from="1542027096534" duration="1745000" />
+      <workItem from="1542195586094" duration="2150000" />
+      <workItem from="1542280824867" duration="1775000" />
+      <workItem from="1542421088633" duration="5342000" />
+      <workItem from="1542502468495" duration="1183000" />
+      <workItem from="1542630563181" duration="5228000" />
+      <workItem from="1542713571999" duration="5217000" />
+      <workItem from="1542801229868" duration="1795000" />
+      <workItem from="1542888238841" duration="1704000" />
+      <workItem from="1542980044663" duration="4903000" />
+      <workItem from="1543022739156" duration="25906000" />
     </task>
+    <task id="LOCAL-00001" summary="commit monitor start">
+      <created>1542426733072</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1542426733072</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update redisconfiguration">
+      <created>1542888463400</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1542888463400</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update start class">
+      <created>1542889264997</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1542889264997</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3504000" />
+    <option name="totallyTimeSpent" value="60452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18710022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -765,26 +579,28 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32899022" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3984799" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.3713355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.329718" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Problems" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.24466951" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.040511727" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -797,123 +613,31 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="commit monitor start" />
+    <MESSAGE value="update redisconfiguration" />
+    <MESSAGE value="update start class" />
+    <option name="LAST_COMMIT_MESSAGE" value="update start class" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/abs/AbstractResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/exception/custom/CustomDefinedException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/exception/GlobalDefaultException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/factory/ResponseParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/schedule/entity/ScheduleJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-356">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/schedule/mapper/ScheduleJobMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/schedule/service/ScheduleJobService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/schedule/service/impl/ScheduleJobServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/schedule/web/ScheduleJobController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/base/BaseJson.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-daily.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/login/web/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/table.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/READER.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/READER.md" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/util/SpringContextUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/constants/PagePrefixEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/constants/ResultEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
@@ -934,6 +658,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/constants/ResultEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://G:/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar!/com/mysql/cj/conf/ConnectionUrlParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar!/com/mysql/cj/conf/BooleanPropertyDefinition.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/repository/io/projectreactor/reactor-core/3.2.2.RELEASE/reactor-core-3.2.2.RELEASE.jar!/reactor/core/publisher/BlockingFirstSubscriber.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/DirList.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/exception/GlobalDefaultException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ScheduleJobMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/trend/schedule/mapper/ScheduleJobMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/schedule/mapper/ScheduleJobMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/Main.java" />
+    <entry file="jar://G:/repository/org/springframework/spring-web/5.1.2.RELEASE/spring-web-5.1.2.RELEASE.jar!/org/springframework/http/MediaType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/test1.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/jquery-3.3.1.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/test.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/FileChannelTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/schedule/web/ScheduleJobController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/config/RedisConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/tool/jdk/jdk1.8/src.zip!/java/nio/Buffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6612">
+          <caret line="377" column="24" selection-start-line="377" selection-start-column="24" selection-end-line="377" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/base/BaseMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -943,43 +770,175 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/base/BaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="119" column="10" selection-start-line="25" selection-start-column="2" selection-end-line="119" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/TrendMonitorApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="209">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="570">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/TrendMonitorApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="20" column="66" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/lib/layui/layui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="92" selection-start-line="1" selection-start-column="92" selection-end-line="1" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/eleDel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/weadmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2090">
+          <caret line="110" column="74" selection-start-line="110" selection-start-column="74" selection-end-line="110" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/css/ecaps.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/css/ecaps.min.css">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/assets/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="257" column="44" selection-start-line="257" selection-start-column="44" selection-end-line="257" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/layui/layui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="6535" selection-start-line="1" selection-start-column="6535" selection-end-line="1" selection-end-column="6535" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/trend/index/web/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#389#390#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/font.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/weadmin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="129" column="24" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/weadmin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="342" column="10" lean-forward="true" selection-start-line="342" selection-start-column="10" selection-end-line="342" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/bigdata.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+          <folding>
+            <element signature="n#li#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#a#0;n#li#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="70" column="62" selection-start-line="70" selection-start-column="62" selection-end-line="70" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4438">
+          <caret line="243" column="27" selection-start-line="243" selection-start-column="27" selection-end-line="243" selection-end-column="27" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

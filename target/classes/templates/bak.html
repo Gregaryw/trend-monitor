@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+<meta charset="UTF-8">
+<title>唯美活动设置</title>
+<!-- 先引入element-ui的css文件 -->
+<link href="https://cdn.bootcss.com/element-ui/1.4.6/theme-default/index.css" rel="stylesheet">
+<style>
+body { margin: 0; padding: 0 }
+a { text-decoration: underline; color: #333 }
+body {
+    font-family: Helvetica,Tahoma,"Hiragino Sans GB","Microsoft YaHei";
+    font-size: 100%;
+    color: #333;
+}
+input,textarea,span,select,button{
+    font-family: Helvetica,Tahoma,"Hiragino Sans GB","Microsoft YaHei";
+}
+#app {
+    /*margin: 40px 0 0 20px;  */
+}
+.pagination {
+    float: right;
+    margin-top: 20px;
+}
+.touch {
+    cursor: pointer;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: #20a0ff;
+}
+
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+[v-cloak] {
+    display: none;
+}
+.el-table .positive-row {
+    background: #e2f0e4;
+}
+/* 减少空白 */
+.el-table .cell, .el-table th>div {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.banner {
+    padding: 0 50px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #EEE;
+}
+
+.on-going {
+    background-color: #e2f0e4;
+    color: #000
+}
+
+.success {
+    color: #13CE66;
+}
+.warning {
+    color: #F7BA2A;
+}
+.danger {
+    color: #FF4949;
+}
+
+.dashboard-status>div {
+    display: inline-block;
+    margin: 0 20px;
+}
+.dashboard-status .num {
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+.chart-wrap {
+    position: fixed;
+    width: 300px;
+    height: 350px;
+    background-color: #FFF;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.04);
+}
+</style>
+</head>
+<body>
+<div id="app" v-cloak>
+<el-row class="banner">
+    <el-col :span="2"><div class=""><b>当前活动状态</b></div></el-col>
+
+    <el-col :span="10" class="dashboard-status">
+        <div :class="">在线活动数：<span class="num" :class="getStatusColor(status.onlineCount)">{{status.onlineCount}}</span></div>
+        <div :class="">明天活动数：<span class="num" :class="getStatusColor(status.oneDayCount)">{{status.oneDayCount}}</span></div>
+        <div :class="">3天后活动数：<span class="num" :class="getStatusColor(status.threeDayCount)">{{status.threeDayCount}}</span></div>
+        <div :class="">7天后活动数：<span class="num" :class="getStatusColor(status.sevenDayCount)">{{status.sevenDayCount}}</span></div>
+    </el-col>
+    <!-- <el-col :span="4"><div class="">s</div></el-col> -->
+</el-row>
+<!-- <el-row>
+    <el-col :span="11">
+        <div class="" style="width: 20%">
+            <el-progress :text-inside="true" :stroke-width="18" :percentage="100" :show-text="false" status="success"></el-progress>
+            <el-progress :text-inside="true" :stroke-width="18" :percentage="70" :show-text="false"></el-progress>
+            <el-progress :text-inside="true" :stroke-width="18" :percentage="50"  :show-text="false" status="exception"></el-progress>
+            <el-progress :text-inside="true" :stroke-width="18" :percentage="0" :show-text="false"></el-progress>
+        </div>
+    </el-col>
+    <el-col :span="11"><div class="">f</div></el-col>
+</el-row> -->
+<el-row style="margin-top: 200px">
+    <el-col :span="6">
+    <el-input placeholder="请输入查找内容" v-model="keyword" style="width: 400px; margin-bottom: 20px;">
+        <el-select v-model="searchType" slot="prepend" placeholder="搜索类型" style="width: 120px;">
+            <el-option label="活动 ID" value="id"></el-option>
+            <el-option label="活动标题" value="title"></el-option>
+        </el-select>
+        <el-button slot="append" icon="search" @click="searchActivity"></el-button> 
+    </el-input>
+    </el-col >
+    <el-col :span="5">
+        <el-button type="primary" @click="showCreateDialog" icon="plus">新建活动</el-button>
+    </el-col>
+    <el-col :span="4" style="float: right">
+        <el-button type="primary" @click="batchBuildHTML" :loading="batchBuildHTMLLoading" icon="upload">一键生成页面</el-button>
+    </el-col>
+</el-row>
+<el-table :data="activityList" height="600" border style="width: 100%;" >
+    <el-table-column prop="id" label="ID" width="40"></el-table-column>
+    <el-table-column label="图片" width="90">
+        <template scope="scope" >
+            <a :href="scope.row.primaryImg" target="_blank"><div  style="text-align: center; height: 40px; line-height: 40px;"><img :src="scope.row.primaryImg + '?x-oss-process=image/resize,p_30'" alt="" style="height: 40px"></div></a>
+        </template>
+    </el-table-column>
+    <el-table-column prop="title" label="标题" width="160"></el-table-column>
+    <el-table-column prop="subTitle" label="副标题" width="250"></el-table-column>
+    <!-- <el-table-column prop="startDate" label="开始时间" width="90"></el-table-column> -->
+    <el-table-column prop="endDate" label="时间" width="190">
+        <template scope="scope">
+            <span :title="checkCurTimeIn(scope.row.startTime, scope.row.endTime) ? '活动进行中' : ''" :class="{ 'on-going' : checkCurTimeIn(scope.row.startTime, scope.row.endTime) }" style="padding: 5px;">{{scope.row.startDate}} ~ {{scope.row.endDate}}</span>
+        </template>
+    </el-table-column>
+    <el-table-column prop="buildTime" label="生成HTML时间" width="150">
+        <template scope="scope">
+            <span v-if="!scope.row.buildTime">还没生成</span>
+            <span v-else>{{scope.row.buildTime}}</span>
+        </template>
+    </el-table-column>
+    <el-table-column prop="inventory" label="子频道" width="400" >
+        <template scope="scope">
+            <el-tag type="gray" v-for="tag in scope.row.channelList" :key="tag.id" :close-transition="true"  style="margin-right: 5px;">{{tag.name}}</el-tag>
+        </template>
+    </el-table-column>
+    <el-table-column prop="sales" label="券" width="40"><template scope="scope"><el-tag type="gray">{{scope.row.couponList.length}}</el-tag></template></el-table-column>
+    <el-table-column label="操作" width="280">
+        <template scope="scope">
+            <el-button style="margin-left:5px" size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <!-- <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">上线</el-button> -->
+            <el-button style="margin-left:5px" size="mini" type="primary" @click="comfirmBuildHTML(scope.$index, scope.row)" :loading="scope.row.loading">生成页面</el-button>
+            <!-- <el-button size="mini" type="primary" @click="scope.row.loading = true" :loading="activityList[scope.$index].loading" >生成页面</el-button> -->
+            <el-button style="margin-left:5px" size="mini" type="primary" @click="preview(scope.$index, scope.row)">预览</el-button>
+            <el-button style="margin-left:5px" size="mini" type="danger" @click="deleteActivity(scope.$index, scope.row)">删除</el-button>
+            <!-- <span style="margin-left:5px" size="mini"  @mouseenter="togglePop($event, scope.row.dataCollect)" @mouseleave="togglePop($event, scope.row.dataCollect)">数据</span> -->
+
+            <el-tag v-if="scope.row.mpVisible === 1" type="success">小程序</el-tag>
+            <!-- <el-switch v-model="scope.row.mpVisible" on-text="小程序开启" off-text="OFF" :on-value="1" :off-value="0" :disabled="true"></el-switch> -->
+        </template>
+    </el-table-column>
+    <el-table-column label="PV" width="60">
+        <template scope="scope">
+            <div @mouseenter="togglePop($event, scope.row.dataCollect)" @mouseleave="togglePop($event, scope.row.dataCollect)"><i class="el-icon-information"></i>{{scope.row.dataCollect.pv}}</div>
+
+            <!-- <div @mouseenter="togglePop($event, scope.row.dataCollect)" @mouseleave="togglePop($event, scope.row.dataCollect)>{{scope.row.dataCollect.pv}}</div> -->
+        </template>
+    </el-table-column>
+    <el-table-column prop="dataCollect.uv" label="UV" width="60"></el-table-column>
+    <el-table-column prop="dataCollect.addCartNum" label="加购物车" width="80"></el-table-column>
+    <el-table-column prop="dataCollect.sellPrice" label="销售额" width="70"></el-table-column>
+</el-table>
+
+
+<!-- 修改活动设置的对话框 -->
+<el-dialog top="10%" title="修改活动设置" :visible.sync="activityDialogVisible" :before-close="handleBeforeClose">
+    <el-form ref="activityForm" :model="activityForm" label-width="130px" style="width: 100%;">
+        <el-form-item label="标题">
+            <el-input v-model="activityForm.title" :maxlength="20"></el-input>
+        </el-form-item>
+        <el-form-item label="副标题">
+            <el-input v-model="activityForm.subTitle" style="" :maxlength="17"></el-input>
+        </el-form-item>
+        <el-form-item label="活动描述">
+            <el-input type="textarea" :rows="3" :maxlength="255" placeholder="活动描述，每行请勿超过21个字符，建议不超过5行" v-model="activityForm.description"></el-input>
+        </el-form-item>
+        <el-form-item label="分享文字">
+            <el-input :maxlength="100" placeholder="分享文字，用于分享后显示出来的文字，最长100，建议控制在50个字符以内" v-model="activityForm.shareText"></el-input>
+        </el-form-item>
+        <el-form-item label="起始 - 截止">
+            <el-date-picker v-model="activityForm.startTime" type="datetime" placeholder="选择开始时间" @change="format1"></el-date-picker>
+            <el-date-picker v-model="activityForm.endTime" type="datetime" placeholder="选择结束时间" @change="format2"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="关联标题">
+            <el-input v-model="activityForm.relationTitle" style="" :maxlength="20" placeholder="关联标题默认使用[关联活动]，如需替换请自定义"></el-input>
+        </el-form-item>
+        <el-form-item label="是否显示在小程序">
+            <el-switch v-model="activityForm.mpVisible" on-text="" :on-value="1" :off-value="0" off-text=""></el-switch>
+        </el-form-item>
+        <el-form-item label="主-副-分享-小程序">
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="updateUploadSuccess1"
+                style="display: inline-block;">
+                <img v-if="activityForm.primaryImg" :src="activityForm.primaryImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="updateUploadSuccess2" style="display: inline-block;">
+                <img v-if="activityForm.subImg" :src="activityForm.subImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="updateUploadSuccess3" style="display: inline-block;">
+                <img v-if="activityForm.shareImg" :src="activityForm.shareImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="updateUploadSuccess4"
+                :before-upload="beforeAvatarUpload" style="display: inline-block;">
+                <img v-if="activityForm.mpShareImg" :src="activityForm.mpShareImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+
+        </el-form-item>
+        <el-form-item label="关联优惠券">
+            <div>
+                <el-tag v-for="coupon in activityForm.couponList" :key="coupon.id" type="primary" :closable="true" @close="removeCoupon(coupon)" style="margin-right: 5px">{{ coupon.backgroundName }}</el-tag>
+            </div>
+            <!-- :props 绑定一个对象, 声明搜索结果显示为backgroundName，value为id   :props="{value: 'id', label: 'backgroundName'}"  -->
+            <el-autocomplete custom-item="coupon-item"  style="width: 90%"
+                :fetch-suggestions="searchCoupon" v-model="couponSearchKeyword" placeholder="请输入优惠券名称进行搜索" @select="couponSelect">
+            </el-autocomplete>
+        </el-form-item>
+        <el-form-item label="子频道">
+            <el-table :data="activityForm.channelList" border style="width: 100%">
+                <el-table-column prop="name" label="名称" width="180">
+                    <!-- <template scope="scope">
+                        <el-input size="small" v-model="scope.row.name"></el-input>
+                    </template> -->
+                </el-table-column>
+                <el-table-column label="商品数量" width="80">
+                    <template scope="scope">
+                        <el-tag type="gray" :type="scope.row.productList.length % 2 == 1 ? 'danger' : 'gray'">{{scope.row.productList.length || 0}}</el-tag>
+                        <span style="color: #FF4949" v-if="scope.row.productList.length % 2 == 1">商品请为复数</span>
+                    </template>
+                </el-table-column>
+                <el-table-column label="排序(大的靠前)" width="150">
+                    <template scope="scope">
+                        <el-input-number size="small" :min="1" :max="99" v-model="scope.row.orderNum" @change="updateChannelOrderNum($event, scope.row)"></el-input-number>
+                        <!-- <el-tag type="gray">{{scope.row.productList.length || 0}}</el-tag> -->
+                    </template>
+                </el-table-column>
+                <el-table-column label="活动ID" show-overflow-tooltip width="100">
+                        <!-- <template scope="scope">
+                            <a target="_blank" :href="'http://www.vmei.com/product/' + scope.row.productId">{{scope.row.name}}</a>
+                        </template> -->
+                        <template scope="scope">
+                            <el-input v-show="scope.row.edit" size="small" v-model="scope.row.accomplishId"></el-input>
+                            <span v-show="!scope.row.edit">{{ scope.row.accomplishId }}</span>
+                        </template>
+                    </el-table-column>
+                <el-table-column label="操作">
+                  <template scope="scope">
+                    <el-button :type="scope.row.edit?'success':''" @click="handleChannelEdit(scope.$index, scope.row)"  size="mini">{{scope.row.edit?'完成':'编辑'}}</el-button>
+                    <el-button size="mini" type="primary" @click="showAddProduct(scope.$index, scope.row)">关联商品</el-button>
+                    <!-- 当为第一则关闭上移按钮，当为最后则关闭下移按钮 -->
+                    <!-- <el-button size="mini" :disabled="activityForm.channelList.indexOf(scope.row) === 0" @click="shiftUp(scope.$index, scope.row)"><i class="el-icon-arrow-up"></i>上移</el-button> -->
+                    <!-- <el-button size="mini" :disabled="activityForm.channelList.indexOf(scope.row) === activityForm.channelList.length - 1" @click="shiftDown(scope.$index, scope.row)"><i class="el-icon-arrow-down"></i>下移</el-button> -->
+                    <el-button size="mini" type="danger" @click="deleteChannel(scope.$index, scope.row)">删除</el-button>
+                  </template>
+                </el-table-column>
+            </el-table>
+            <el-row style="margin-top: 10px;">
+                <el-input size="small" v-model="newChanelName" placeholder="子频道名称（建议2或4个字符，品牌名除外）" style="width: 40%;"></el-input>
+                <!-- <el-input-number size="small" v-model="orderNum"></el-input-number> -->
+                <el-button size="small" type="primary" @click="addChannel">新增</el-button>
+    
+            <el-row>
+        </el-form-item>
+        <el-form-item label="关联其他">
+            <el-table :data="activityForm.relationList" border style="width: 100%">
+                <el-table-column label="图片" width="100">
+                    <template scope="scope" >
+                        <div  style="text-align: center;"><a target="_blank" :href="scope.row.imgUrl"><img :src="scope.row.imgUrl" alt="无法显示" style="width: 50px"></a></div>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="title" label="活动标题" width="180"></el-table-column>
+                <!-- <el-table-column prop="imgUrl"  label="图片URL" width="340"></el-table-column> -->
+                <el-table-column label="类型" width="120">
+                    <template scope="scope" >
+                        <span v-if="scope.row.type === 'ACTIVITY'">活动</span>
+                        <span v-else-if="scope.row.type === 'ALBUM'">专辑</span>
+                        <span v-else-if="scope.row.type === 'PRODUCT'">商品</span>
+                        <span v-else-if="scope.row.type === 'URL'">网页</span>
+                        <span v-else-if="scope.row.type === 'TOPIC'">话题</span>
+                        <span v-else-if="scope.row.type === 'BRAND'">新品牌团</span>
+                        <span v-else-if="scope.row.type === 'TRIAL_DETAIL'">试用详情</span>
+                        <span v-else-if="scope.row.type === 'POST'">帖子详情</span>
+                        <span v-else-if="scope.row.type === 'IMAGE'">图片</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="targetId" label="链接或目标ID" width="250"></el-table-column>
+                <el-table-column label="操作">
+                  <template scope="scope">
+                    <el-button size="mini" type="danger" @click="deleteRelation(scope.$index, scope.row)">删除</el-button>
+                  </template>
+                </el-table-column>
+            </el-table>
+            <el-select size="small" v-model="relationForm.type" placeholder="关联类型" style="width: 100px" @change="handleRealtionTypeChange">
+                <el-option label="活动" value="ACTIVITY"></el-option>
+                <el-option label="专辑" value="ALBUM"></el-option>
+                <el-option label="商品" value="PRODUCT"></el-option>
+                <el-option label="网页" value="URL"></el-option>
+                <el-option label="话题" value="TOPIC"></el-option>
+                <el-option label="新品牌团" value="BRAND"></el-option>
+                <el-option label="试用详情" value="TRIAL_DETAIL"></el-option>
+                <el-option label="帖子详情" value="POST"></el-option>
+                <el-option label="图片" value="IMAGE"></el-option>
+            </el-select>
+            <!-- <el-input  :disabled="true" size="small" v-model="relationForm.imgUrl" placeholder="图片URL" style="width: 480px;"></el-input> -->
+            <div style="width: 100px; height: 80px;margin-left: 20px; display: inline-block; position: relative">
+                <img v-if="relationForm.imgUrl != ''" :src="relationForm.imgUrl" alt="" style="width: 80px; position: absolute; bottom: 0">
+                <span v-else>
+                    <span v-if="relationForm.type === 'ACTIVITY'">活动无需上传</span>
+                    <span v-else>请上传图片</span>
+                </span>
+            </div>
+            <!-- 如果关联活动的类型是活动，则不需要再上传图片 -->
+            <el-upload :disabled="relationForm.type === 'ACTIVITY'" action="/picManager/uploadPicture/userSpace" :show-file-list="false" :on-success="relationImgUploadSuccess" style="display: inline-block">
+                <el-button size="small" type="primary" :disabled="relationForm.type === 'ACTIVITY'">点击上传</el-button>
+            </el-upload>
+            <el-input size="small" v-model="relationForm.targetId" placeholder="链接或目标ID" style="width: 120px;" @change="handleRelationTargetIdChange"></el-input>
+            <el-input size="small" v-model="relationForm.title" placeholder="标题(可选)" style="width: 200px;"></el-input>
+            <el-button size="small" type="primary" @click="addRelation">新增</el-button>
+        </el-form-item>
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+        <el-button @click="handleUpdateDialogCancel">取 消</el-button>
+        <el-button type="primary" @click="updateActivity">确 定</el-button>
+    </span>
+</el-dialog>
+
+<!-- 创建活动设置的对话框 -->
+<el-dialog top="10%" title="创建活动设置" :visible.sync="createActivityDialogVisible">
+    <el-form ref="activityCreateForm" :rules="rules" :model="activityCreateForm" label-width="130px" style="width: 100%;">
+        <el-form-item label="标题" prop="title">
+            <el-input v-model="activityCreateForm.title" :maxlength="20"></el-input>
+        </el-form-item>
+        <el-form-item label="副标题">
+            <el-input v-model="activityCreateForm.subTitle" style="" :maxlength="17"></el-input>
+        </el-form-item>
+        <el-form-item label="活动描述">
+            <el-input type="textarea" :rows="3" :maxlength="255" placeholder="活动描述，每行请勿超过21个字符，建议不超过5行" v-model="activityCreateForm.description"></el-input>
+        </el-form-item>
+        <el-form-item label="分享文字">
+            <el-input :maxlength="100" placeholder="分享文字，用于分享后显示出来的文字，最长100，建议控制在50个字符以内" v-model="activityCreateForm.shareText"></el-input>
+        </el-form-item>
+        <el-form-item label="起始 - 截止">
+            <el-date-picker v-model="activityCreateForm.startTime" type="datetime" placeholder="选择开始时间" ></el-date-picker>
+            <el-date-picker v-model="activityCreateForm.endTime" type="datetime" placeholder="选择结束时间"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="关联标题">
+            <el-input v-model="activityCreateForm.relationTitle" style="" :maxlength="20" placeholder="关联标题默认使用[关联活动]，如需替换请自定义"></el-input>
+        </el-form-item>
+        <el-form-item label="主-副-分享-小程序">
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="createUploadSuccess1"
+                :before-upload="beforeAvatarUpload" style="display: inline-block;">
+                <img v-if="activityCreateForm.primaryImg" :src="activityCreateForm.primaryImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <!-- 副图片暂时取消 -->
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="createUploadSuccess2"
+                :before-upload="beforeAvatarUpload" style="display: inline-block;">
+                <img v-if="activityCreateForm.subImg" :src="activityCreateForm.subImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="createUploadSuccess3"
+                :before-upload="beforeAvatarUpload" style="display: inline-block;">
+                <img v-if="activityCreateForm.shareImg" :src="activityCreateForm.shareImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <el-upload class="avatar-uploader" 
+                action="/picManager/uploadPicture/userSpace"
+                :show-file-list="false"
+                :on-success="createUploadSuccess4"
+                :before-upload="beforeAvatarUpload" style="display: inline-block;">
+                <img v-if="activityCreateForm.mpShareImg" :src="activityCreateForm.mpShareImg" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+            <!-- <div style="color: #FF4949"> -->
+            <div style="line-height: 20px; color: #1D8CE0">
+                <p style="margin: 0 0;">* 主图：建议图片的比例为 宽:高=2:1</p>
+                <!-- <p style="margin: 0 0;">* 副图：</p> -->
+                <p style="margin: 0 0;">* 分享图：建议使用 300px * 300px</p>
+                <p style="margin: 0 0;">* 小程序分享图：建议使用 215 : 168</p>
+            </div>
+        </el-form-item>
+    
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+        <el-button @click="createActivityDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="createActivity">确 定</el-button>
+    </span>
+</el-dialog>
+
+<!-- 子频道关联商品的对话框 -->
+<el-dialog size="large" top="10%" title="关联商品" :visible.sync="addProducDialogVisible">
+    <el-row>
+        <el-col :span="11">
+            <el-input v-model="channelAddKeyword" placeholder="请输入查找内容" style="width: 400px; margin-bottom: 20px;">
+                <el-button slot="append" icon="search" @click="addProductSearch"></el-button> 
+            </el-input>
+            <el-table :data="productList" height="500"  @selection-change="handleSelectionChange" >
+                <el-table-column type="selection" width="35" :selectable="canSelectProduct"></el-table-column>
+                <el-table-column prop="productId" label="商品ID" width="90"></el-table-column>
+                <el-table-column label="商品名称" show-overflow-tooltip width="350">
+                    <template scope="scope">
+                        <a target="_blank" :href="'http://www.vmei.com/product/' + scope.row.productId">{{scope.row.name}}</a>
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作" >
+                    <template scope="scope">
+                        <el-tag  v-if="scope.row.added === true">已添加</el-tag>
+                       <!--  <el-buttonsize="small" @click="function() {alert('请点击批量添加按钮')}">添加</el-button>
+                        <el-button v-else :disabled="true" size="small">已添加</el-button> -->
+                    </template>
+                </el-table-column>
+            </el-table>
+            <el-button type="primary"  @click="addProduct" style="margin-top: 20px;" :disabled="selectProductList.length == 0">批量添加</el-button>
+        </el-col>
+        <el-col :span="11" style="float: right" >
+            <el-input id="removeKeyword" placeholder="请输入查找内容" style="width: 400px; margin-bottom: 20px;visibility: hidden">
+                <el-button slot="append" icon="search" @click="removeProductSearch"></el-button> 
+            </el-input>
+            <el-table :data="channelForm.productList" height="500" @selection-change="handleSelectionChange2">
+                <el-table-column type="selection" width="35"></el-table-column>
+                <el-table-column prop="productId" label="商品ID" width="90"></el-table-column>
+                <el-table-column label="图片" width="150">
+                    <template scope="scope" >
+                        <span v-if="scope.row.customPictureUrl == null">默认图片</span>
+                        <a v-else :href="scope.row.customPictureUrl" target="_blank"><div  style="text-align: center;"><img :src="scope.row.customPictureUrl" alt="" style="width: 50px"></div></a>
+                    </template>
+                </el-table-column>
+                <el-table-column label="商品名称" show-overflow-tooltip width="350">
+                    <template scope="scope">
+                        <a target="_blank" :href="'http://www.vmei.com/product/' + scope.row.productId">{{scope.row.name}}</a>
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作">
+                    <template scope="scope">
+                        <!-- <el-button type="primary" size="small" @click="handleEdit(scope.$index, scope.row)">关联图片</el-button> -->
+                        <!-- <el-button type="danger" size="small" @click="handleEdit(scope.$index, scope.row)">删除</el-button>                        
+                        <el-button type="danger" size="small" @click="handleEdit(scope.$index, scope.row)">删除</el-button> -->
+                        <el-upload action="/picManager/uploadPicture/userSpace" :show-file-list="false" 
+                        :on-success="changeProductImgSuccess" style="display: inline-block">
+                            <el-button size="small" type="primary" @click="product = scope.row">更改图片</el-button>
+                        </el-upload>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <el-button type="danger" @click="removeProduct" style="margin-top: 20px;" :disabled="selectRemoveProductList.length == 0">批量删除</el-button>
+        </el-col>
+    </el-row>
+
+    <span slot="footer" class="dialog-footer">
+        <el-button @click="addProducDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="addProducDialogVisible = false">确 定</el-button>
+    </span>
+</el-dialog>
+
+<el-pagination
+  class="pagination"
+  @current-change="handleCurrentChange"
+  :current-page="currentPage"
+  :page-size="pageSize"
+  layout="total, prev, pager, next, jumper"
+  :total="totalSize">
+</el-pagination>
+
+<!-- 数据统计图表 --> 
+<transition name="fade">
+    <div :style="pop.styleObj" v-show="dataPopVisible" class="chart-wrap">
+        <div id="echarts" style="width: 250px;height: 350px;"></div>
+        </div>
+    </div>
+</transition>
+
+<!-- <span>created in vmei with love</span> -->
+</div>
+</body>
+<!-- 依赖 -->
+<!-- <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script> -->
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+<script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.min.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/1.4.6/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.5.4/echarts.min.js"></script>
+<script>
+/* 自定义组件 */
+// el-autocomplete 当需要自定义模板时, 需要自定义组件
+Vue.component('coupon-item', {
+    functional: true,
+    render: function (h, ctx) {
+        var item = ctx.props.item;
+        return h('li', ctx.data, [
+            h('span', { attrs: { class: '' } }, [item.backgroundName]),
+            h('span', { attrs: { class: '', style: 'float: right' } }, [item.id])
+        ]);
+    },
+    props: {
+        item: { type: Object, required: true }
+    }
+});
+
+
+
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        status: {},
+        dataPopVisible: false,
+        pop: {
+            styleObj: {
+                    left: '10px',
+                    top: '0px',
+            },
+            data: {},
+        },
+        echarts: null,
+        batchBuildHTMLLoading: false,       // 批量生成页面的loading状态
+        // 控制dialog显示的变量
+        createActivityDialogVisible: false,
+        activityDialogVisible: false,
+        addProducDialogVisible: false,
+
+        // 前端分页3个必备参数
+        currentPage: 1,     // 当前页数
+        totalSize: 0,       // 总数
+        pageSize: 12,       // 每页的数量
+
+        searchType: '',
+        keyword: '',
+        searchCouponList: [],   // ajax 查询返回的优惠券列表
+        newChanelName: '',      // 新增子频道名
+        couponSearchKeyword: '',// 搜索优惠券关键词
+        activityList: [],
+        activityForm: {},
+        channelAddKeyword: '',
+        orderNum: 1,           // 频道的排序优先级，大的优先
+        relationSearchKeyword: '', // 搜索其他关联活动关键词
+        relationSearchType: '',
+        relationImgUrl: '',
+        // 创建表单的声明与初始化
+        activityCreateForm: {
+            title: '',
+            subTitle: '',
+            description: '',
+            primaryImg: '',
+            subImg: '',
+            shareImg: '',
+            mpShareImg: '',
+            shareText: '',
+            startTime: '',
+            endTime: '',
+            relationTitle: '',
+        },
+        relationForm: {
+            type: 'ACTIVITY',
+            imgUrl: '',
+            targetId: '',
+            title: '',
+        },
+        channelForm: {},        // 当前操作的channel
+        productList: [],        // 搜索的商品结果
+        selectProductList: [],  // 选中的商品List
+        product: {},            // 当前操作的product, 用在自定义商品图片时绑定
+        selectRemoveProductList: [], // 选中准备移除的商品List
+        // 创建校验规则
+        rules: {
+            title: [
+                { required: true, message: '请输入标题', trigger: 'blur' },
+            ],
+
+        },
+
+    },
+    // watch, 监控, 当监控的值发生变化时执行某一函数
+    watch: {
+        addProducDialogVisible: {
+            handler: function() {
+                if (this.addProducDialogVisible === true) {
+                    this.selectProductList = [];
+                }
+            }
+        },
+    },
+    // Vue生命周期函数, mounted 实例装配好时的调用函数
+    mounted: function() {
+        /* 全局拦截器 */
+        Vue.http.interceptors.push(function(request, next) {
+            next(function(res) {
+                // 处理HTTP失败时的操作
+                if (!res.data) {
+                    console.log('HTTP请求失败', res);
+                } else if (!res.data.success) {
+                    this.$message.error('操作失败：' + res.data.msg);
+                    return;
+                }
+            });
+        });
+        this.getActivityList();
+        this.getStatus();
+        this.echarts = echarts.init(document.getElementById('echarts'));
+        
+    },
+    methods: {
+        // 根据offset与pageSize获取我activity列表
+        getActivityList: function() {
+            // 前端分页的算法: offset(起始) = (当前页数 - 1) * 每页数量
+            var offset = (this.currentPage - 1) * this.pageSize;
+            this.$http.get('activity?offset=' + offset + '&limit=' + this.pageSize).then(function(res) { 
+                res.data.data.activityList.forEach(function(item) {
+                    // 前端简单显示日期
+                    // item.mpVisible2 = item.mpVisible === 1 ? true :
+                    item.startDate = item.startTime.split(" ")[0];
+                    item.endDate = item.endTime.split(" ")[0];
+                    item.loading = false;
+                    item.channelList.forEach(function(item) {
+                        item.edit = false;
+                    })
+                });
+
+                this.activityList = res.data.data.activityList;
+                this.totalSize = res.data.data.total;
+            })
+        },
+        getStatus: function() {
+            this.$http.get('activity/status').then(function(res) {
+                this.status = res.data.data.status;
+            })
+        },
+        createActivity: function() {
+            if (!this.activityCreateForm.startTime || !this.activityCreateForm.endTime) {
+                this.$message.error('开始与结束时间不能为空');
+                return;
+            }
+            if (!this.activityCreateForm.subImg || !this.activityCreateForm.shareImg) {
+                this.$message.error('副图-分享图必须上传');
+                return;
+            }
+            this.$http.post('activity', this.activityCreateForm).then(function(res) {
+                console.log(res.data);
+                if (res.data.success) {
+                    this.getActivityList();
+                    this.createActivityDialogVisible = false;
+                    // 重置表单
+                    this.activityCreateForm = {
+                        title: '',
+                        subTitle: '',
+                        description: '',
+                        primaryImg: '',
+                        subImg: '',
+                        shareImg: '',
+                        shareText: '',
+                        startTime: '',
+                        endTime: '',
+                        relationTitle: '',
+                    }
+                }  
+            })
+        },
+        searchActivity: function() {
+            // 如果搜索词为空串, 则正常搜索
+            if (!this.keyword) {
+                this.getActivityList();
+                return;
+            }
+
+            var queryObj = this.searchType === 'id' ? { id : this.keyword} : { title : this.keyword};
+            this.$http.get('activity/search', {params: queryObj}).then(function(res) {
+                this.totalSize = res.data.data.total;
+                this.activityList = res.data.data.activityList;
+                console.log(res);
+            })
+        },
+        handleEdit: function(idx, row) {
+            this.activityForm = Object.assign({}, row);  // Object.assign为浅拷贝
+            this.activityDialogVisible = true;
+        },
+        deleteActivity: function(idx, row) {
+            if (!confirm('确定删除?')) {
+                return;
+            }
+            this.$http.delete("activity/" + row.id)
+            .then(function(res) {
+                console.log(res);
+                if (res.data.success) {
+                    this.getActivityList(); // 刷新数据
+                } else {
+                    this.$message.error(res.data.msg);
+                }
+            })
+        },
+        updateActivity: function() {
+            // 检查商品子频道的商品数量
+            if (!this.checkChannelList()) {
+                this.$message.error('子频道的商品数量不能为单数');
+                return;
+            }
+
+            var form = this.activityForm;
+            // 因为红包, 关联商品, 子频道等这些每次更变都会发送HTTP更新，所以这里只需要更新基础的字段即可
+            this.$http.put("activity", 
+                {
+                    id: form.id,
+                    title: form.title,
+                    primaryImg: form.primaryImg,
+                    subTitle: form.subTitle,
+                    description: form.description,
+                    startTime: form.startTime,
+                    endTime: form.endTime,
+                    subImg: form.subImg,
+                    shareImg: form.shareImg,
+                    mpShareImg: form.mpShareImg,
+                    shareText: form.shareText,
+                    relationTitle: form.relationTitle,
+                    mpVisible: form.mpVisible,
+                }
+            ).then(function(res) {
+                if (res.data.success) {
+                    this.activityDialogVisible = false;
+                    this.getActivityList();
+                }
+            })   
+            // this.$message.info("阿狗还没做呀");
+        },
+        handleCurrentChange: function(page) {
+            console.log(page);
+            this.currentPage = page;
+            this.getActivityList();
+        },
+        // 图片上传
+        handleAvatarSuccess: function(res, file) {
+            console.log(res);
+            this.imageUrl = URL.createObjectURL(file.raw);
+        },
+        beforeAvatarUpload: function(file) {
+            // const isJPG = file.type === 'image/jpeg';
+            var isImg = (file.type + '').startsWith('image');
+            const isLt2M = file.size / 1024 / 1024 < 2;
+
+            if (!isImg) {
+                this.$message.error('请上传图片文件');
+            }
+            if (!isLt2M) {
+                this.$message.error('图片大小请小与2M');
+            }
+            return isImg && isLt2M;
+        },
+        showAddProduct: function(idx, row) {
+            this.channelForm = row;
+            console.log(row);
+            this.addProducDialogVisible = true;
+        },
+        handleSelectionChange: function(val) {
+            this.selectProductList = val; // val是一个数组 [Object, Object]
+        },
+        handleSelectionChange2: function(val) {
+            this.selectRemoveProductList = val;
+        },
+        showCreateDialog: function() {
+            this.createActivityDialogVisible = true;
+        },
+        searchCoupon: function(keyword, callback) {
+            this.$http.get('/promotionCenter/coupon/list?backgroundName=' + keyword + '&pageNo=1&pageSize=20')
+            .then(function(res) {
+                this.searchCouponList = res.data.data.coupons || [];
+                callback(this.searchCouponList);
+            })
+        },
+        // 增加子频道名字
+        addChannel: function() {
+            if (!this.newChanelName) {
+                this.$message.error('频道名称不能为空');
+                return;
+            }
+            if (/(^\s|\s$)/.test(this.newChanelName)) {
+                this.$message.error('频道名称开头或结尾不能包含空字符串');
+                return;
+            }
+            this.$http.post('activity/' + this.activityForm.id + '/channel', 
+                { 
+                    name: this.newChanelName,
+                    activityId: this.activityForm.id,
+                    orderNum: this.orderNum,
+                }
+            ).then(function(res) {
+                console.log(res);
+                // this.activityForm.channelList.push({
+                //     name: this.newChanelName,
+                //     productList: [],
+                // });
+                this.getActivityInfo(); // 刷新数据
+            })
+            
+        },
+        // 删除频道
+        deleteChannel: function(idx, row) {
+            console.log(row);
+            if (confirm('确定删除频道？')) {
+                this.$http.delete('activity/' + row.activityId +'/channel/' + row.id).then(function(res) {
+                    console.log(res)
+                    if (res.data.success) {
+                        this.activityForm.channelList.splice(this.activityForm.channelList.indexOf(row), 1);
+                        console.log('删除成功');
+                    }
+                }, function(res) {
+                    console.log('删除失败');
+                    console.log(res);
+                })
+            }
+                
+        },
+        addProductSearch: function() {
+            var queryObj = {
+                channelId: this.channelForm.id,
+                search: this.channelAddKeyword,
+                locale: 'zh_cn',
+                pageSize: 50,
+                searchLiveShow: false,
+                onlineStatus: true,
+                pageNo: 1,
+            }
+            // get 传递参数对象
+            this.$http.get('activity/product/search', {params: queryObj}).then(function(res) {
+                console.log(res);
+                this.productList = res.data.data.result;
+            }, function(res) {
+                console.log(res);
+            })
+        },
+        removeProductSearch: function() {
+            var keyword = document.querySelector("#removeKeyword").value || '';
+            console.log(keyword);
+
+        },
+        createUploadSuccess1: function(res, file) {
+            this.activityCreateForm.primaryImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        createUploadSuccess2: function(res, file) {
+            this.activityCreateForm.subImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        createUploadSuccess3: function(res, file) {
+            this.activityCreateForm.shareImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        createUploadSuccess4: function(res, file) {
+            this.activityCreateForm.mpShareImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        updateUploadSuccess1: function(res, file) {
+            this.activityForm.primaryImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        updateUploadSuccess2: function(res, file) {
+            this.activityForm.subImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        updateUploadSuccess3: function(res, file) {
+            this.activityForm.shareImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        updateUploadSuccess4: function(res, file) {
+            this.activityForm.mpShareImg = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        changeProductImgSuccess: function(res, file) {
+            this.$http.post('activity/channel/customProduct',
+                {
+                    channelId: this.channelForm.id,
+                    productId: this.product.productId,
+                    imgUrl: res.data['domain.upload.img']+ '/' + res.data.picUrl,
+                }, 
+                {emulateJSON: true})
+            .then(function(res) {
+                console.log(res);
+
+                if (res.data.success) {
+                    // 重新获取数据
+                    this.$http.get('activity/' + this.activityForm.id).then(function(res) {
+                        this.activityForm = res.data.data.activity;
+                        var self = this;
+                        this.activityForm.channelList.forEach(function(channel) {
+                            if (channel.id === self.channelForm.id) {
+                                self.channelForm = channel;
+                            }
+                        })
+                    }, function(res) {
+                    })
+                } else {
+                    this.$message.error(res.data.msg);
+                }
+            }, function(res) {
+                console.log(res);
+                this.$message.error(res.data.msg);
+            })
+            console.log(res, file);
+        },
+        test: function() {
+            console.log('test')
+        },
+        // 更新子
+        updateChannelProduct: function() {
+
+        },
+        // 移除红包
+        removeCoupon: function(coupon) { 
+            this.$http.delete('activity/' + this.activityForm.id + '/coupon/' + coupon.id).then(function(res) {
+                if (res.data.success) {
+                    this.activityForm.couponList.splice(this.activityForm.couponList.indexOf(coupon), 1);
+                } else {
+                    this.$message.error('添加优惠券失败');
+                }
+            }, function(res) {
+                this.$message.error('服务器似乎发什么了什么错误');
+                console.log(res);
+            })
+            
+        },
+        couponSelect: function(coupon) {
+            this.$http.post('activity/' + this.activityForm.id + '/coupon/' + coupon.id).then(function(res) {
+                if (res.data.success) {
+                    this.couponSearchKeyword = '';  // 初始化搜索关键词
+                    this.activityForm.couponList.push(coupon);
+                } else {
+                    this.$message.error(res.data.msg);
+                }
+            }, function(res) {
+                this.$message.error('服务器似乎发什么了什么错误');
+                console.log(res);
+            })
+        },
+        getActivityInfo: function() {
+            this.$http.get('activity/' + this.activityForm.id).then(function(res) {
+                console.log(res);
+                this.activityForm = res.data.data.activity;
+                // callback(res.data.data.activity);
+            }, function(res) {
+                console.log(res);
+                console.log('获取出错')
+            })
+        },
+        canSelectProduct: function(row, idx) {
+            return row.added === false;  // 当还未加入时checkbox可勾选
+        },
+        addProduct: function() {
+            var ids = '';
+            this.selectProductList.forEach(function(p) {
+                ids += p.productId + ',';
+            })
+            console.log(ids);
+            this.$http.post('activity/channel/' + this.channelForm.id +'/product?ids=' + ids).then(function(res) {
+                console.log(res)
+                if (res.data.success) {
+                    this.$message.success('添加商品成功');
+                    this.productList = []; //清空原来数据
+
+                    // 重新获取数据
+                    this.$http.get('activity/' + this.activityForm.id).then(function(res) {
+                        this.activityForm = res.data.data.activity;
+                        var self = this;
+                        this.activityForm.channelList.forEach(function(channel) {
+                            if (channel.id === self.channelForm.id) {
+                                self.channelForm = channel;
+                            }
+                        })
+                    }, function(res) {
+                    })
+                    // this.getActivityInfo();
+                    // 删除商品的table绑定了channelForm.productList的数据.
+                    // 调用this.getActivityInfo()更新了 activityForm的数据, 但是channelForm并没有更新，
+                    // 所以遍历新数据重新绑定channelForm, 从而自动刷新界面数据
+                    // var self = this;
+                    // this.activityForm.channelList.forEach(function(channel) {
+                    //     if (channel.id === self.channelForm.id) {
+                    //         self.channelForm = channel;
+                    //     }
+                    // })
+                }
+            }, function(res) {
+                console.log(res)
+            })
+        },
+        removeProduct: function() {
+            if (!confirm('确定删除？')) return;
+            // 拼接删除商品的ID
+            var ids = '';
+            this.selectRemoveProductList.forEach(function(p) {
+                ids += p.productId + ',';
+            })
+            this.$http.delete('activity/channel/' + this.channelForm.id +'/product?ids=' + ids).then(function(res) {
+                if (res.data.success) {
+                    var self = this;
+                    this.selectRemoveProductList.forEach(function(p) {
+                        self.channelForm.productList.splice(self.channelForm.productList.indexOf(p), 1);
+                    });
+                } else {
+                    this.$message.error("操作失败：" + res.data.msg);
+                }
+                console.log(res)
+            }, function(res) {
+                console.log(res)
+            })
+        },
+        addRelation: function() {
+            if (!this.relationForm.imgUrl) {
+                this.$message.error('请上传图片');
+                return;
+            }
+            if (!this.relationForm.targetId) {
+                this.$message.error('链接或目标ID不能为空');
+                return;
+            }
+            this.$http.post('activity/' + this.activityForm.id + '/relation',
+                {
+                   type: this.relationForm.type,
+                   imgUrl: this.relationForm.imgUrl,
+                   targetId: this.relationForm.targetId,
+                   activityId: this.activityForm.id,
+                   title: this.relationForm.title,
+                }
+            ).then(function(res) {
+                console.log(res);
+                if (res.data.success) {
+                    this.$message.success('新增成功');
+                    this.getActivityInfo(); // 刷新数据
+                    // 绑定数据复原
+                    this.relationForm.imgUrl = '';
+                    this.relationForm.targetId = '';
+                }
+            }, function(res) {
+                console.log(res);
+            })
+        },
+        deleteRelation: function(idx, row) {
+            if (confirm('确定删除？')) {
+                this.$http.delete('activity/' + this.activityForm.id + '/relation/' + row.id)
+                .then(function(res) {
+                    console.log(res);
+                    if (res.data.success) {
+                        this.activityForm.relationList.splice(this.activityForm.relationList.indexOf(row), 1);
+                        console.log('删除成功');
+                    }
+                }, function(res) {
+                    console.log(res);
+                });
+            }
+        },
+        relationImgUploadSuccess: function(res, file) {
+            console.log(res, file);
+            this.relationForm.imgUrl = res.data['domain.upload.img']+ '/' + res.data.picUrl;
+        },
+        updateChannelOrderNum: function(newValue, row) {
+            console.log(newValue, row);
+            row.orderNum = newValue;
+            this.updateChannel(row);
+        },
+        updateChannel: function(obj) {
+            this.$http.put('activity/' + obj.activityId +'/channel', obj).then(function(res) {
+                this.$message.success('更新成功');
+            })
+        },
+        comfirmBuildHTML: function(idx, row) {
+            
+            var self = this;
+            this.$msgbox({
+                title: '提示',
+                message: '您确定生成页面吗？此操作会覆盖旧有的活动页面！',
+                showCancelButton: true,
+                cancelButtonText: '取消',
+                confirmButtonText: '确定',
+                beforeClose: function(action, instance, done) {
+                    if (action === 'confirm') {
+                        done();
+
+                        row.loading = true;
+                        self.buildHTML(idx, row, function(response) {
+                            row.loading = false;
+                            if (response.data.success) {
+                                window.open(response.data.data.url);
+                            }
+                        });
+                    } else {
+                        done();
+                    }
+                }
+            })
+        },
+        buildHTML: function (idx, row, callback) {
+            this.$http.put('activity/' + row.id + '/html').then(function(res) {
+                row.url = res.data.data.url;  // ???
+                callback ? callback(res) : '';
+            }, function(res) {
+                callback ? callback(res) : '';
+            }).catch(function(res) {
+                callback ? callback(res) : '';
+            })
+        },
+        batchBuildHTML: function() {
+            if (this.activityList.length == 0) {
+                this.$message.info("当前的列表好像空空如也")
+                return;
+            }
+
+            var self = this;
+            
+            this.$msgbox({
+                title: '提示',
+                message: '您确定批量生成此页面所有的活动页面吗？',
+                showCancelButton: true,
+                cancelButtonText: '取消',
+                confirmButtonText: '确定',
+                beforeClose: function(action, instance, done) {
+                    if (action === 'confirm') {
+                        done();
+
+                        self.batchBuildHTMLLoading = true;
+                        var length = self.activityList.length;
+                        var callback = function(response) { self.batchBuildHTMLLoading = false; self.$message.success("生成页面成功"); self.getActivityList() };
+                        self.activityList.forEach(function(item, idx) {
+                            idx === length - 1  ?  self.buildHTML(null, item, callback) : self.buildHTML(null, item);
+                        })
+                    } else {
+                        done();
+                    }
+                }
+            })
+        },
+        preview: function(idx, row) {
+            window.open("/vmeiActivity/preview/" + row.id); // 通过动态生成进行预览
+        },
+        handleRealtionTypeChange: function(val) {
+            if (val === 'ACTIVITY') {  // 清除图片
+                this.relationForm.imgUrl = ''; 
+            }
+        },
+        handleRelationTargetIdChange: function(val) {
+
+            // 当选择的是活动时，前端查找该活动的副图(9.21)
+            if (this.relationForm.type === 'ACTIVITY') {
+                this.$http.get('activity/' + val).then(function(res) {
+                    if (res.data.success && res.data.data.activity) {
+                        if (!res.data.data.activity.subImg) {
+                            this.relationForm.imgUrl = '';
+                            this.$message.error('该活动似乎没有副图?');
+                        } else {
+                            this.relationForm.imgUrl = res.data.data.activity.subImg || '';
+                        }
+                    }
+                })
+            }
+        },
+        // UTC的的值会使服务器端绑定Date失败，这里前端修复
+        format1: function (val) {
+            this.activityForm.startTime = val;
+        },
+        format2: function(val) {
+            this.activityForm.endTime = val;
+        },
+        handleUpdateDialogCancel: function() {
+            if (this.checkChannelList()) {
+                this.activityDialogVisible = false;
+            } else {
+                this.$message.error('子频道的商品数量不能为单数');
+            }
+        },
+        checkChannelList: function() {
+            for (let channel of this.activityForm.channelList) {
+                if (channel.productList.length % 2 == 1) {
+                    return false;
+                }
+            }
+            return true;
+        },
+        handleBeforeClose: function (done) {            
+            if (this.checkChannelList()) {
+                done();
+            } else {
+                this.$message.error('子频道的商品数量不能为单数');
+            }
+        },
+        // 当该活动显示在小程序上时，行标示绿色
+        tableRowClassName: function (row, idx) {
+            if (row.mpVisible === 1) {
+                return "positive-row";
+            }
+            return "";
+        },
+        handleChannelEdit: function (idx, row) {
+            if (row.edit === true) {
+                row.accomplishId = parseInt(row.accomplishId);
+                if (isNaN(row.accomplishId)) {
+                    this.$message.error('活动ID必须为数字类型');
+                    return;
+                }
+                this.updateChannel(row);
+            }
+            row.edit = !row.edit;
+        },
+        checkCurTimeIn: function(start, end) {
+            start = new Date(start);
+            end = new Date(end);
+            var now = Date.now();
+            return now > start &&  now < end;
+        },
+        getStatusColor: function(num) {
+            if (num > 5)
+                return 'success';
+            else if (num > 3)
+                return 'warning';
+            else
+                return 'danger';
+
+        },
+        togglePop: function(e, data) {
+            this.dataPopVisible = !this.dataPopVisible;
+            if (this.dataPopVisible) {
+                this.pop.styleObj.left = e.pageX + 5 + "px";
+                this.pop.styleObj.top = e.pageY - 350 + "px";
+                this.pop.data = data;
+                this.echarts.setOption(this.getEchartsOption(data));
+            }
+        },
+        getEchartsOption: function(data) {
+            option = {
+                color: ['#3398DB'],
+                grid: {
+                    left: '2%',
+                    right: '2%',
+                    bottom: '2%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['APP', 'Wechat', '小程序'],
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                    }
+                ],
+                series : [
+                    {
+                        name:'pv',
+                        type:'bar',
+                        barWidth: '10%',    
+                        data:[data.pvs.app, data.pvs.wechat, data.pvs.mp]
+                    }
+                ]
+            }
+            return option;
+        }
+    },
+})
+</script>
+</html>
